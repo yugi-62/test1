@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API 예제</title>
+    <style>
+        h1{color: blue;font-size: 16px;font-family: 학교안심 우주,monospace;}
+        /*주석
+        .text{ 전부}*/
+    </style>
+</head>
+<body>
+    <h1>랜덤 명언</h1>
+    <p id="quote"></p>
+
+    <script>
+        // 데이터를 표시할 HTML 요소를 선택합니다.
+        const quoteElement = document.getElementById("quote");
+
+        // API URL을 정의합니다.
+        const apiUrl = "https://api.example.com/quotes";
+
+        // API에서 데이터를 가져옵니다.
+        fetch(apiUrl)
+            .then(response => response.json()) // 응답을 JSON으로 파싱합니다.
+            .then(data => {
+                // HTML 요소의 내용을 가져온 명언으로 업데이트합니다.
+                quoteElement.textContent = data.quote;
+            })
+            .catch(error => {
+                console.error("오류 발생:", error);
+                quoteElement.textContent = "데이터를 가져오는 데 실패했습니다.";
+            });
+    </script>
+</body>
+</html>
